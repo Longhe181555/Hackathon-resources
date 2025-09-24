@@ -4,7 +4,7 @@ This repository contains all the resources, sample files, and public test script
 
 ## Structure
 
-- `public-tests/` — Public k6/JMeter scripts for self-checking
+- `scripts/` — All k6 and JMeter test scripts (public and hidden)
 - `api-spec/` — API documentation/specification
 - `assets/` — Logos, images, and sample data
 - `Dockerfile`, `docker-compose.yml` — Sample containerization files
@@ -26,7 +26,7 @@ This repository contains all the resources, sample files, and public test script
 ## Tools Used
 
 - **k6**: Modern load testing tool for running automated API performance and reliability tests.
-- **JMeter**: Industry-standard tool for advanced load and stress testing scenarios.
+- **JMeter**: Industry-standard tool for advanced load and stress testing scenarios. Used for additional or more complex performance scenarios and scoring.
 
 ## Testing & Scoring
 
@@ -98,5 +98,107 @@ Each submission is provided with a `public-test` script to ensure the project ca
 - This ensures fair, transparent, and reproducible evaluation for all participants.
 
 ---
+
+---
+
+## Running the Test Cases (Demo/Test Event)
+
+This repository includes both public and hidden test scripts for demonstration purposes. To run the tests and score your submission:
+
+### 1. Start all services with Docker Compose
+
+```sh
+docker-compose up -d
+```
+
+### 2. Enter the container shell (k6 or jmeter)
+
+For k6:
+
+```sh
+docker-compose exec k6 sh
+```
+
+For JMeter:
+
+```sh
+docker-compose exec jmeter sh
+```
+
+### 3. Run a test script and export the summary to a mounted folder
+
+For k6:
+
+```sh
+k6 run --summary-export=/scripts/score-k6.json /scripts/k6-full-metrics.js
+```
+
+For JMeter (example):
+
+```sh
+jmeter -n -t /scripts/jmeter-full-metrics.jmx -l /scripts/score-jmeter.json
+```
+
+### 4. Exit the container
+
+```sh
+exit
+```
+
+### 5. Score the results on your host
+
+For k6:
+
+```sh
+node scripts/score-k6.js scripts/score-k6.json
+```
+
+For JMeter:
+
+```sh
+node scripts/score-jmeter.js scripts/score-jmeter.json
+```
+
+## How the Combined Score Is Measured and Calculated
+
+To ensure fair and comprehensive evaluation, both k6 and JMeter are used to test each team’s backend. Each tool simulates user load and measures key performance metrics. The combined score is calculated as follows:
+
+1. **Run Both Tests:**
+
+   - k6 and JMeter are run with the same scenarios against the backend.
+   - Each tool generates a results file (e.g., `score-k6.json` for k6, `score-jmeter.json` for JMeter).
+
+2. **Extract Metrics:**  
+   For each tool, the following metrics are extracted:
+
+   - **Response Time:** Average, 95th percentile (P95), etc.
+   - **Throughput:** Requests per second (RPS).
+   - **Reliability:** Success rate (percentage of successful requests).
+   - **Scalability:** Maximum concurrent users or virtual users (VUs) supported.
+
+3. **Score Each Metric:**  
+   Each metric is scored using a rubric (e.g., Excellent, Good, Fair, Poor, Fail), with points assigned based on performance bands.
+
+4. **Average the Scores:**  
+   For each metric, the scores from k6 and JMeter are averaged to produce a fair, balanced result.  
+   For example:
+
+   - If k6 gives 20 points for Response Time and JMeter gives 15, the combined score for that metric is (20 + 15) / 2 = 17.5.
+
+5. **Sum for Final Score:**  
+   The averaged scores for all metrics are summed to produce a final combined score out of 100.
+
+**Why Combine?**  
+Using both tools ensures that results are robust and not biased by a single testing method. Averaging the scores rewards teams that perform well across different types of load and scenarios.
+
+To combine and fairly average both scores:
+
+```sh
+node scripts/score.js scripts/score-k6.json scripts/score-jmeter.json
+```
+
+---
+
+**Note:** In this test event, both public and hidden test scripts are included in the repo for demonstration. In a real hackathon, only public tests would be visible to participants.
 
 For questions, contact the hackathon organizers.
