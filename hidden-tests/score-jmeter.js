@@ -39,32 +39,67 @@ rl.on('line', (line) => {
     if (t > max) max = t;
 });
 
+const SCORING_BANDS = {
+    responseTime: [
+        { score: 25, avg: 500, p95: 500 },
+        { score: 20, avg: 1000, p95: 2000 },
+        { score: 15, avg: 2000, p95: 4000 },
+        { score: 10, avg: 4000, p95: 8000 },
+        { score: 0 }
+    ],
+    throughput: [
+        { score: 25, rps: 50 },
+        { score: 20, rps: 20 },
+        { score: 15, rps: 10 },
+        { score: 10, rps: 5 },
+        { score: 0 }
+    ],
+    reliability: [
+        { score: 25, rate: 0.999 },
+        { score: 20, rate: 0.995 },
+        { score: 15, rate: 0.99 },
+        { score: 10, rate: 0.95 },
+        { score: 0 }
+    ],
+    scalability: [
+        { score: 25, vus: 50 },
+        { score: 20, vus: 30 },
+        { score: 15, vus: 20 },
+        { score: 10, vus: 10 },
+        { score: 0 }
+    ]
+};
+
 function scoreResponseTime(avg, p95) {
-    if (avg < 500) return 25;
-    if (avg < 1000 || p95 < 2000) return 20;
-    if (avg < 2000 || p95 < 4000) return 15;
-    if (avg < 4000 || p95 < 8000) return 10;
+    for (const band of SCORING_BANDS.responseTime) {
+        if ((avg < band.avg || band.avg === undefined) && (p95 < band.p95 || band.p95 === undefined)) {
+            return band.score;
+        }
+    }
     return 0;
 }
 function scoreThroughput(rps) {
-    if (rps > 50) return 25;
-    if (rps > 20) return 20;
-    if (rps > 10) return 15;
-    if (rps > 5) return 10;
+    for (const band of SCORING_BANDS.throughput) {
+        if (rps > band.rps || band.rps === undefined) {
+            return band.score;
+        }
+    }
     return 0;
 }
 function scoreReliability(successRate) {
-    if (successRate >= 0.999) return 25;
-    if (successRate >= 0.995) return 20;
-    if (successRate >= 0.99) return 15;
-    if (successRate >= 0.95) return 10;
+    for (const band of SCORING_BANDS.reliability) {
+        if (successRate >= band.rate || band.rate === undefined) {
+            return band.score;
+        }
+    }
     return 0;
 }
 function scoreScalability(vus) {
-    if (vus >= 50) return 25;
-    if (vus >= 30) return 20;
-    if (vus >= 20) return 15;
-    if (vus >= 10) return 10;
+    for (const band of SCORING_BANDS.scalability) {
+        if (vus >= band.vus || band.vus === undefined) {
+            return band.score;
+        }
+    }
     return 0;
 }
 
