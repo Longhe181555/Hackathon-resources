@@ -15,7 +15,7 @@ export let options = {
     },
 };
 
-const BASE_URL = 'http://localhost:8080/api';
+const BASE_URL = __ENV.BASE_URL || 'http://backend:8080/api';
 
 export default function () {
     // User creation
