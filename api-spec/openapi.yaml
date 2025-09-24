@@ -1,0 +1,191 @@
+openapi: 3.0.0
+info:
+  title: FinTech Hackathon API
+  version: 1.0.0
+  description: API contract for required endpoints
+servers:
+  - url: http://localhost:8080/api
+paths:
+  /users:
+    post:
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                maxSpendingLimit:
+                  type: number
+                savings:
+                  type: number
+              required: [username, maxSpendingLimit, savings]
+      responses:
+        "201":
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /users/{id}:
+    put:
+      summary: Update a user
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                maxSpendingLimit:
+                  type: number
+                savings:
+                  type: number
+              required: [username, maxSpendingLimit, savings]
+      responses:
+        "200":
+          description: User updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /expenses:
+    post:
+      summary: Add a new expense
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: string
+                amount:
+                  type: number
+                date:
+                  type: string
+                  format: date
+                userId:
+                  type: string
+              required: [category, amount, date, userId]
+      responses:
+        "201":
+          description: Expense created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Expense"
+  /expenses/{id}:
+    put:
+      summary: Update an expense
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: string
+                amount:
+                  type: number
+                date:
+                  type: string
+                  format: date
+                userId:
+                  type: string
+              required: [category, amount, date, userId]
+      responses:
+        "200":
+          description: Expense updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Expense"
+  /articles:
+    post:
+      summary: Create an article
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+              required: [title, content]
+      responses:
+        "201":
+          description: Article created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Article"
+    get:
+      summary: Get all articles
+      responses:
+        "200":
+          description: List of articles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Article"
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+        username:
+          type: string
+        maxSpendingLimit:
+          type: number
+        savings:
+          type: number
+    Expense:
+      type: object
+      properties:
+        _id:
+          type: string
+        category:
+          type: string
+        amount:
+          type: number
+        date:
+          type: string
+          format: date
+        userId:
+          type: string
+    Article:
+      type: object
+      properties:
+        _id:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
