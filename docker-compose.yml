@@ -27,6 +27,8 @@ services:
     command: ["sleep", "infinity"]
     depends_on:
       - backend
+    environment:
+      - BASE_URL=http://backend:8080/api
 
   jmeter:
     image: justb4/jmeter:latest
@@ -37,3 +39,5 @@ services:
     command: ["sleep", "infinity"]
     depends_on:
       - backend
+    environment:
+      - BASE_URL=http://backend:8080/api
