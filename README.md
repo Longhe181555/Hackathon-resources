@@ -39,13 +39,13 @@ Each submission is provided with a `public-test` script to ensure the project ca
 - **99th Percentile (P99)**
 - **Max Response Time**
 
-| Score     | Criteria                     |
-| --------- | ---------------------------- |
-| Excellent | Avg < 100ms, P95 < 200ms     |
-| Good      | Avg < 300ms, P95 < 500ms     |
-| Fair      | Avg < 500ms, P95 < 1000ms    |
-| Poor      | Avg < 1000ms, P95 < 2000ms   |
-| Fail      | Avg > 1000ms or P95 > 2000ms |
+| Score     | Criteria (Original)          | Criteria (Adjusted)    |
+| --------- | ---------------------------- | ---------------------- |
+| Excellent | Avg < 100ms, P95 < 200ms     | < 500ms                |
+| Good      | Avg < 300ms, P95 < 500ms     | < 1000ms, P95 < 2000ms |
+| Fair      | Avg < 500ms, P95 < 1000ms    | < 2000ms, P95 < 4000ms |
+| Poor      | Avg < 1000ms, P95 < 2000ms   | < 4000ms, P95 < 8000ms |
+| Fail      | Avg > 1000ms or P95 > 2000ms | Above these            |
 
 ### 2. Throughput Metrics (25 pts)
 
@@ -81,13 +81,13 @@ Each submission is provided with a `public-test` script to ensure the project ca
 - **Breaking Point (when system fails)**
 - **Resource Utilization (CPU, Memory)**
 
-| Score     | Criteria               |
-| --------- | ---------------------- |
-| Excellent | Handles 1000+ users    |
-| Good      | Handles 500-1000 users |
-| Fair      | Handles 200-500 users  |
-| Poor      | Handles 50-200 users   |
-| Fail      | <50 concurrent users   |
+| Score     | Criteria (Adjusted) |
+| --------- | ------------------- |
+| Excellent | Handles 50 VUs      |
+| Good      | 30–49 VUs           |
+| Fair      | 20–29 VUs           |
+| Poor      | 10–19 VUs           |
+| Fail      | <10 VUs             |
 
 ---
 

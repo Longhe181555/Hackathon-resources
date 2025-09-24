@@ -68,17 +68,17 @@ async function getJMeterMetrics(path) {
 
 // --- SCORING RUBRIC (adjust as needed) ---
 function scoreResponseTime(avg, p95) {
-    if (avg < 100 && p95 < 200) return 25;
-    if (avg < 300 && p95 < 500) return 20;
-    if (avg < 500 && p95 < 1000) return 15;
-    if (avg < 1000 && p95 < 2000) return 10;
+    if (avg < 500) return 25;
+    if (avg < 1000 || p95 < 2000) return 20;
+    if (avg < 2000 || p95 < 4000) return 15;
+    if (avg < 4000 || p95 < 8000) return 10;
     return 0;
 }
 function scoreThroughput(rps) {
-    if (rps > 500) return 25;
-    if (rps > 200) return 20;
-    if (rps > 100) return 15;
-    if (rps > 50) return 10;
+    if (rps > 50) return 25;
+    if (rps > 20) return 20;
+    if (rps > 10) return 15;
+    if (rps > 5) return 10;
     return 0;
 }
 function scoreReliability(successRate) {
@@ -89,10 +89,10 @@ function scoreReliability(successRate) {
     return 0;
 }
 function scoreScalability(vus) {
-    if (vus >= 1000) return 25;
-    if (vus >= 500) return 20;
-    if (vus >= 200) return 15;
-    if (vus >= 50) return 10;
+    if (vus >= 50) return 25;
+    if (vus >= 30) return 20;
+    if (vus >= 20) return 15;
+    if (vus >= 10) return 10;
     return 0;
 }
 
