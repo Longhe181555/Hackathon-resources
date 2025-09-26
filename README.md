@@ -30,7 +30,6 @@ This repository contains all the resources, sample files, and public test script
 
 ## Testing & Scoring
 
-
 **Note:** The scoring bands and thresholds below are provided as examples for this test hackathon. Organizers may adjust these bands for other events or to match different levels of difficulty or fairness.
 
 Each submission is provided with a `public-test` script to ensure the project can be run and tested automatically. The following metrics are used to score each submission out of 100 points:
