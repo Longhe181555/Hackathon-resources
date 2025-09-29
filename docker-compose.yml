@@ -1,23 +1,24 @@
 services:
-  backend:
+  app-backend:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ./backend # Set to your backend folder or . if in root
+      dockerfile: Dockerfile # Adjust if your Dockerfile is elsewhere
     ports:
       - "8080:8080"
     environment:
-      - MONGODB_URL_=mongodb://mongodb:27017/finsight
-  frontend:
+      - MONGODB_URL=mongodb://db:27017/appdb # Use generic db name and service
+
+  app-frontend:
     build:
-      context: ./finsight-client-v2/finsight
-      dockerfile: ../../Dockerfile.frontend
+      context: ./frontend # Set to your frontend folder
+      dockerfile: Dockerfile # Adjust if needed
     ports:
       - "8081:80"
-  mongodb:
+
+  db:
     image: mongo:latest
     ports:
       - "27017:27017"
-
 
   k6:
     image: grafana/k6:latest
@@ -26,9 +27,9 @@ services:
     entrypoint: [""]
     command: ["sleep", "infinity"]
     depends_on:
-      - backend
+      - app-backend
     environment:
-      - BASE_URL=http://backend:8080/api
+      - BASE_URL=http://app-backend:8080/api
 
   jmeter:
     image: justb4/jmeter:latest
@@ -37,6 +38,6 @@ services:
     entrypoint: [""]
     command: ["sleep", "infinity"]
     depends_on:
-      - backend
+      - app-backend
     environment:
-      - BASE_URL=http://backend:8080/api
+      - BASE_URL=http://app-backend:8080/api
