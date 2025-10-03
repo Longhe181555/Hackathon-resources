@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  back-end:
+    build: ./back-end
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - JWT_SECRET=supersecret
+    restart: unless-stopped
+
+  front-end:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    ports:
+      - "8080:3000"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - back-end
+
+  k6:
+    image: grafana/k6
+    depends_on:
+      - back-end
+    volumes:
+      - ./scripts:/scripts
+    environment:
+      - BASE_URL=http://back-end:3000
+    entrypoint: ["/bin/sh", "/scripts/wait-for-services.sh"]

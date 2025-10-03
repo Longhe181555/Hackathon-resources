@@ -1,0 +1,400 @@
+{
+    "metrics": {
+        "http_req_tls_handshaking": {
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0
+        },
+        "group_duration": {
+            "p(95)": 67.94363019999999,
+            "avg": 22.000466500757113,
+            "min": 1.111839,
+            "med": 9.016445,
+            "max": 507.769114,
+            "p(90)": 41.20836840000001
+        },
+        "iteration_duration": {
+            "p(90)": 1074.6892602,
+            "p(95)": 1209.7104297999997,
+            "avg": 1057.7679441426908,
+            "min": 1017.465867,
+            "med": 1034.093173,
+            "max": 1508.530931
+        },
+        "http_req_waiting": {
+            "max": 75.552334,
+            "p(90)": 6.748189,
+            "p(95)": 16.01413,
+            "avg": 3.8937923884682646,
+            "min": 0,
+            "med": 1.824596
+        },
+        "http_req_failed": {
+            "passes": 6868,
+            "fails": 15453,
+            "value": 0.3076923076923077
+        },
+        "http_req_receiving": {
+            "p(95)": 0.15059,
+            "avg": -0.003063210026432613,
+            "min": -1563.332728,
+            "med": 0.051355,
+            "max": 6.459743,
+            "p(90)": 0.114125
+        },
+        "data_received": {
+            "count": 435900121,
+            "rate": 7770968.689898571
+        },
+        "iterations": {
+            "count": 1717,
+            "rate": 30.609657115823207
+        },
+        "data_sent": {
+            "count": 7369336,
+            "rate": 131376.14917372866
+        },
+        "http_req_blocked": {
+            "p(95)": 0.005805,
+            "avg": 0.004629209040813594,
+            "min": 0.001129,
+            "med": 0.002369,
+            "max": 3.476656,
+            "p(90)": 0.004452
+        },
+        "checks": {
+            "passes": 56661,
+            "fails": 0,
+            "value": 1
+        },
+        "http_req_sending": {
+            "p(90)": 0.026554,
+            "p(95)": 0.034011,
+            "avg": 0.012099412481519672,
+            "min": 0.003606,
+            "med": 0.007994,
+            "max": 0.731329
+        },
+        "http_reqs": {
+            "count": 22321,
+            "rate": 397.9255425057017
+        },
+        "vus": {
+            "value": 1,
+            "min": 1,
+            "max": 30
+        },
+        "http_req_duration": {
+            "avg": 3.902828590923336,
+            "min": -1562.048251,
+            "med": 1.903917,
+            "max": 75.649733,
+            "p(90)": 6.854107,
+            "p(95)": 16.080737
+        },
+        "vus_max": {
+            "min": 30,
+            "max": 30,
+            "value": 30
+        },
+        "http_req_connecting": {
+            "med": 0,
+            "max": 0.26581,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.00016502983737287758,
+            "min": 0
+        },
+        "http_req_duration{expected_response:true}": {
+            "p(90)": 7.004114000000002,
+            "p(95)": 15.862218799999988,
+            "avg": 4.118268345822811,
+            "min": 0.069375,
+            "med": 2.104397,
+            "max": 75.649733
+        }
+    },
+    "root_group": {
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {
+            "Login": {
+                "name": "Login",
+                "path": "::Login",
+                "id": "3be6f351497d03a0d837b765965c8d50",
+                "groups": {
+                    "Foods CRUD": {
+                        "name": "Foods CRUD",
+                        "path": "::Login::Foods CRUD",
+                        "id": "d523325fa5ea1f01880978dc83f89789",
+                        "groups": {},
+                        "checks": {
+                                "POST /foods status 201": {
+                                    "name": "POST /foods status 201",
+                                    "path": "::Login::Foods CRUD::POST /foods status 201",
+                                    "id": "fcbdd4a3536085cb5a5582bd95787c08",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "POST /foods returns food": {
+                                    "id": "3467bc8c6d1ef21c19902df7b36a8f6e",
+                                    "passes": 1717,
+                                    "fails": 0,
+                                    "name": "POST /foods returns food",
+                                    "path": "::Login::Foods CRUD::POST /foods returns food"
+                                },
+                                "POST /foods response structure": {
+                                    "name": "POST /foods response structure",
+                                    "path": "::Login::Foods CRUD::POST /foods response structure",
+                                    "id": "5512ed5545a458304a4ec3fda76f7e91",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "POST /foods missing fields 400": {
+                                    "path": "::Login::Foods CRUD::POST /foods missing fields 400",
+                                    "id": "7e2dea1a367f100fb70219c3d3e2d4d6",
+                                    "passes": 1717,
+                                    "fails": 0,
+                                    "name": "POST /foods missing fields 400"
+                                },
+                                "POST /foods missing fields response structure": {
+                                    "name": "POST /foods missing fields response structure",
+                                    "path": "::Login::Foods CRUD::POST /foods missing fields response structure",
+                                    "id": "f45ea6bd7c8b9a2b7a1fb7de0126d144",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "GET /foods status 200": {
+                                    "name": "GET /foods status 200",
+                                    "path": "::Login::Foods CRUD::GET /foods status 200",
+                                    "id": "95e79b1a8e70d1fd6c25b389fd4390da",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "GET /foods returns array": {
+                                    "name": "GET /foods returns array",
+                                    "path": "::Login::Foods CRUD::GET /foods returns array",
+                                    "id": "1ca30ec2cb0299aab6cddeb7884678df",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "GET /foods response structure": {
+                                    "id": "4b32fb6a7bc71067814ef41406e8f714",
+                                    "passes": 1717,
+                                    "fails": 0,
+                                    "name": "GET /foods response structure",
+                                    "path": "::Login::Foods CRUD::GET /foods response structure"
+                                },
+                                "GET /foods/:id status 200": {
+                                    "fails": 0,
+                                    "name": "GET /foods/:id status 200",
+                                    "path": "::Login::Foods CRUD::GET /foods/:id status 200",
+                                    "id": "5e62b58b1261299bf3021aa6620b5781",
+                                    "passes": 1717
+                                },
+                                "GET /foods/:id returns food": {
+                                    "name": "GET /foods/:id returns food",
+                                    "path": "::Login::Foods CRUD::GET /foods/:id returns food",
+                                    "id": "2a2215095ce6b9ee9fa02d35674e8d2d",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "GET /foods/:id response structure": {
+                                    "name": "GET /foods/:id response structure",
+                                    "path": "::Login::Foods CRUD::GET /foods/:id response structure",
+                                    "id": "b485d7dc49ad0fae4cb118ec4f9f9a8b",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "GET /foods/:id invalid returns error": {
+                                    "fails": 0,
+                                    "name": "GET /foods/:id invalid returns error",
+                                    "path": "::Login::Foods CRUD::GET /foods/:id invalid returns error",
+                                    "id": "5668e13bf380ee21ca397e38b001e6fc",
+                                    "passes": 1717
+                                },
+                                "GET /foods/:id invalid response structure": {
+                                    "id": "c1f6a1f05fc903802082edb0c11e2c7d",
+                                    "passes": 1717,
+                                    "fails": 0,
+                                    "name": "GET /foods/:id invalid response structure",
+                                    "path": "::Login::Foods CRUD::GET /foods/:id invalid response structure"
+                                }
+                            }
+                    },
+                    "Meal Planning": {
+                        "path": "::Login::Meal Planning",
+                        "id": "85ed928655f4ca3313e503d276278e22",
+                        "groups": {},
+                        "checks": {
+                                "POST /meals status 201": {
+                                    "passes": 1717,
+                                    "fails": 0,
+                                    "name": "POST /meals status 201",
+                                    "path": "::Login::Meal Planning::POST /meals status 201",
+                                    "id": "5b9853bacfe13b895a71e1b60215fe55"
+                                },
+                                "POST /meals returns meal": {
+                                    "name": "POST /meals returns meal",
+                                    "path": "::Login::Meal Planning::POST /meals returns meal",
+                                    "id": "0060ba1f9af26990b0bf0ed3d2e6b972",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "POST /meals response structure": {
+                                    "name": "POST /meals response structure",
+                                    "path": "::Login::Meal Planning::POST /meals response structure",
+                                    "id": "2bded888172f5f954f8f85af8d880c0c",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "POST /meals missing fields 400": {
+                                    "path": "::Login::Meal Planning::POST /meals missing fields 400",
+                                    "id": "f48548daf91fc3aa86745333eec6df40",
+                                    "passes": 1717,
+                                    "fails": 0,
+                                    "name": "POST /meals missing fields 400"
+                                },
+                                "POST /meals missing fields response structure": {
+                                    "name": "POST /meals missing fields response structure",
+                                    "path": "::Login::Meal Planning::POST /meals missing fields response structure",
+                                    "id": "8a1bef1b380bc65e7340218881480e30",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "GET /meals status 200": {
+                                    "id": "fd273757c71851a8e3947afd8c835562",
+                                    "passes": 1717,
+                                    "fails": 0,
+                                    "name": "GET /meals status 200",
+                                    "path": "::Login::Meal Planning::GET /meals status 200"
+                                },
+                                "GET /meals returns array": {
+                                    "name": "GET /meals returns array",
+                                    "path": "::Login::Meal Planning::GET /meals returns array",
+                                    "id": "8644b12ddb684734c4ddb362c25fd704",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "GET /meals response structure": {
+                                    "fails": 0,
+                                    "name": "GET /meals response structure",
+                                    "path": "::Login::Meal Planning::GET /meals response structure",
+                                    "id": "e81c55ae65a85cc7e97852f19e5c4865",
+                                    "passes": 1717
+                                }
+                            },
+                        "name": "Meal Planning"
+                    },
+                    "Food Log": {
+                        "groups": {},
+                        "checks": {
+                                "POST /logs status 201": {
+                                    "name": "POST /logs status 201",
+                                    "path": "::Login::Food Log::POST /logs status 201",
+                                    "id": "d210881e9c366751d800ab38b84a738f",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "POST /logs response structure": {
+                                    "name": "POST /logs response structure",
+                                    "path": "::Login::Food Log::POST /logs response structure",
+                                    "id": "8721d4c8f5d1060513106ae193cec2d0",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "POST /logs missing fields 400": {
+                                    "passes": 1717,
+                                    "fails": 0,
+                                    "name": "POST /logs missing fields 400",
+                                    "path": "::Login::Food Log::POST /logs missing fields 400",
+                                    "id": "431984d1d2df41e94e692ceca2d27b3a"
+                                },
+                                "POST /logs missing fields response structure": {
+                                    "fails": 0,
+                                    "name": "POST /logs missing fields response structure",
+                                    "path": "::Login::Food Log::POST /logs missing fields response structure",
+                                    "id": "e280c5bb7f0e5abc17a966720b614761",
+                                    "passes": 1717
+                                },
+                                "GET /logs status 200": {
+                                    "id": "5d973e1affb399003fc6c1eea783a0b8",
+                                    "passes": 1717,
+                                    "fails": 0,
+                                    "name": "GET /logs status 200",
+                                    "path": "::Login::Food Log::GET /logs status 200"
+                                },
+                                "GET /logs returns array": {
+                                    "name": "GET /logs returns array",
+                                    "path": "::Login::Food Log::GET /logs returns array",
+                                    "id": "9bc774404a6d7f4bc7ebc35907fc9442",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "GET /logs response structure": {
+                                    "name": "GET /logs response structure",
+                                    "path": "::Login::Food Log::GET /logs response structure",
+                                    "id": "cd951f063556d2c698c38e249de07971",
+                                    "passes": 1717,
+                                    "fails": 0
+                                }
+                            },
+                        "name": "Food Log",
+                        "path": "::Login::Food Log",
+                        "id": "eac5c888f41f1480ef13c108a56ed9d7"
+                    },
+                    "Nutrition Insights": {
+                        "path": "::Login::Nutrition Insights",
+                        "id": "4e8809f0f9ebc3079327cc1b11d1f03f",
+                        "groups": {},
+                        "checks": {
+                                "GET /insights/summary status 200": {
+                                    "name": "GET /insights/summary status 200",
+                                    "path": "::Login::Nutrition Insights::GET /insights/summary status 200",
+                                    "id": "2d4b0992d4adc4d5731036e1b720aaa7",
+                                    "passes": 1717,
+                                    "fails": 0
+                                },
+                                "GET /insights/summary response structure": {
+                                    "id": "236532f99b4f62351f084466e131b5ff",
+                                    "passes": 1717,
+                                    "fails": 0,
+                                    "name": "GET /insights/summary response structure",
+                                    "path": "::Login::Nutrition Insights::GET /insights/summary response structure"
+                                }
+                            },
+                        "name": "Nutrition Insights"
+                    }
+                },
+                "checks": {
+                    "login status 200": {
+                        "passes": 1717,
+                        "fails": 0,
+                        "name": "login status 200",
+                        "path": "::Login::login status 200",
+                        "id": "00d70296de0bc702385cae7e9b9e3efa"
+                    },
+                    "login returns token": {
+                        "name": "login returns token",
+                        "path": "::Login::login returns token",
+                        "id": "59c2cf642405a56626d9d63d2a33fb23",
+                        "passes": 1717,
+                        "fails": 0
+                    },
+                    "login response structure": {
+                        "passes": 1717,
+                        "fails": 0,
+                        "name": "login response structure",
+                        "path": "::Login::login response structure",
+                        "id": "5eccaaf40fd408cb84e5f425e922a48e"
+                    }
+                }
+            }
+        },
+        "checks": {}
+    }
+}
